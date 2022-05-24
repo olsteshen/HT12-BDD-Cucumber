@@ -17,7 +17,7 @@ public class StepDefs {
     SearchResultsPage searchResultsPageObject;
     AccountPage accountPageObject;
 
-    @Given("^the user opens bookdepository site$")
+    @Given("^(?:Guest user|Customer) opens bookdepository site$")
     public void openSite() {
         homePageObject = new HomePage(driver);
     }
@@ -28,14 +28,14 @@ public class StepDefs {
         searchResultsPageObject = homePageObject.searchButtonClick();
     }
 
-    @Then("^the search results are displayed$")
+    @Then("^the search results are( not|) displayed$")
     public void pageWithSearchResultsIsPresent() {
         Assertions.assertThat(searchResultsPageObject.isSearchResultsPresent())
                 .overridingErrorMessage("Search results are not displayed")
                 .isTrue();
     }
 
-    @When("^clicks on the Sign in button on navigation bar$")
+    @When("^clicks on the Sign (?:in|out) button on navigation bar$")
     public void clickSigninButton() {
         accountPageObject = homePageObject.navBarClick();
         accountPageObject.isLoginTitleDisplayed();
