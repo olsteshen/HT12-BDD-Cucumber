@@ -3,11 +3,12 @@ package desktop.pages;
 import abstractclasses.page.AbstractPage;
 import desktop.fragments.NavigationBarFragment;
 import driver.SingletonDriver;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static constants.Constants.HOME_PAGE_URL;
+import static constants.Constants.INITIAL_HOME_PAGE;
 
 public class HomePage extends AbstractPage {
     NavigationBarFragment navigationBar = new NavigationBarFragment(driver);
@@ -20,11 +21,13 @@ public class HomePage extends AbstractPage {
 
     public HomePage(WebDriver driver) {
         super(driver);
-        SingletonDriver.getInstance().get(HOME_PAGE_URL);
+        SingletonDriver.getInstance().get(INITIAL_HOME_PAGE);
     }
 
-    public void enterSearchTerm(String searchTerm) {
+    public SearchResultsPage enterSearchTerm(String searchTerm) {
         searchBarInput.sendKeys(searchTerm);
+        searchBarInput.sendKeys(Keys.ENTER);
+        return new SearchResultsPage(driver);
     }
 
     public SearchResultsPage searchButtonClick() {

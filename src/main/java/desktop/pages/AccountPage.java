@@ -15,11 +15,11 @@ public class AccountPage extends AbstractPage {
     @FindBy(xpath = "//h1[contains(@class,'a-spacing-top-small')]")
     public WebElement titleText;
     @FindBy(xpath = "//*[@id='ap_email']")
-    WebElement emailField;
+    public WebElement emailField;
     @FindBy(xpath = "//input[@type='password']")
-    WebElement passwordField;
+    public WebElement passwordField;
     @FindBy(xpath = "//input[@id='signInSubmit']")
-    WebElement submitButton;
+    public WebElement submitButton;
     NavigationBarFragment navigationBar = new NavigationBarFragment(driver);
 
     public AccountPage(WebDriver driver) {
@@ -27,7 +27,7 @@ public class AccountPage extends AbstractPage {
         SingletonDriver.getInstance();
     }
 
-    public void checkURL() {
+    public void checkAccountPageURL() {
         Assertions.assertEquals(SIGN_IN_PAGE_URL, SingletonDriver.getInstance().getCurrentUrl(), "Wrong page url" );
     }
 

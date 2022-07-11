@@ -19,7 +19,7 @@ public class SingletonDriver {
 
     private SingletonDriver() {
         System.setProperty(CHROME_DRIVER_EXE_PROPERTY, CHROME_DRIVER_PATH);
-        WebDriverManager.chromedriver().driverVersion("100.0.4896.88 ").setup();
+        WebDriverManager.chromedriver().driverVersion("103.0.5060.114").setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT_TIMEOUT));
