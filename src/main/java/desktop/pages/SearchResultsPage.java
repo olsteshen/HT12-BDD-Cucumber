@@ -40,12 +40,12 @@ public class SearchResultsPage extends AbstractPage {
     private WebElement bookItemTitle;
     @FindBy(xpath="//button[@class='btn btn-primary'][contains(text(),'Refine results')]")
     private WebElement refineResultsButton;
-    @FindBy(xpath="//div[@class='basket-info']//a[contains(text(),'Basket / Checkout')]")
+    @FindBy(xpath="//a[contains(@class,'continue-to-basket')]")
     public WebElement continueButton;
     @FindBy(xpath="//div[@class='basket-page ']")
     public WebElement basketPageContent;
-//    @FindBy(xpath="//div[contains(@class,'modal-dialog')]")
-//    WebElement basketModal;
+    @FindBy(xpath="//div[contains(@class,'modal-content')]")
+    WebElement basketModal;
 
 private static final String BOOK_ITEM_TITLE = "//div[@class='book-item']//h3/a";
 
@@ -91,11 +91,18 @@ private static final String BOOK_ITEM_TITLE = "//div[@class='book-item']//h3/a";
     }
 
     public BasketPage clickButtonContinue(){
+//        Actions builder = new Actions(driver);
+//        Action seriesOfActions = builder
+//                .moveToElement(continueButton)
+//                .click()
+//                .build();
+//        seriesOfActions.perform();
+  //      continueButton.click();
+       // WebElement button = driver.findElement(By.xpath("//a[contains(@class,'continue-to-basket')]"));
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        WebElement button = driver.findElement(By.xpath("//div[@class='basket-info']//a[contains(text(),'Basket')]"));
-        js.executeScript("arguments[0].click();", button);
-       // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
-        //wait.until(ExpectedConditions.visibilityOf(basketPageContent));
+        js.executeScript("arguments[0].click();", continueButton);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+        wait.until(ExpectedConditions.visibilityOf(basketPageContent));
         return new BasketPage(driver);
     }
 }

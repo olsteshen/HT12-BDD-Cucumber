@@ -89,17 +89,26 @@ public class CheckoutPage extends AbstractPage {
         emailAddress.sendKeys(email);
     }
 
-    public void fillAddressFields(List<Address> deliveryAddress){
+    public void fillAddressFields(DataTable deliveryAddress){
         Select countrySelect = new Select(deliveryCountry);
-        for(Address address: deliveryAddress){
-            fullName.sendKeys(address.getFullName());
-            countrySelect.selectByVisibleText(address.getCountry());
-            addressLine1.sendKeys(address.getLine1());
-            addressLine2.sendKeys(address.getLine2());
-            city.sendKeys(address.getCity());
-            state.sendKeys(address.getState());
-            postcode.sendKeys(address.getPostcode());
-        }
+        List<Map<String,String>> data= deliveryAddress.asMaps(String.class, String.class);
+        fullName.sendKeys(data.get(0).get("Full name"));
+        countrySelect.selectByVisibleText(data.get(0).get("Delivery country"));
+        addressLine1.sendKeys(data.get(0).get("Address line 1"));
+        addressLine2.sendKeys(data.get(0).get("Address line 2"));
+        city.sendKeys(data.get(0).get("Town/City"));
+        state.sendKeys(data.get(0).get("County/State"));
+        postcode.sendKeys(data.get(0).get("Postcode"));
+
+//        for(Address address: deliveryAddress){
+//            fullName.sendKeys(address.getFullName());
+//            countrySelect.selectByVisibleText(address.getCountry());
+//            addressLine1.sendKeys(address.getLine1());
+//            addressLine2.sendKeys(address.getLine2());
+//            city.sendKeys(address.getCity());
+//            state.sendKeys(address.getState());
+//            postcode.sendKeys(address.getPostcode());
+//        }
     }
 
     public void enterCardDetails(DataTable cardDetails){

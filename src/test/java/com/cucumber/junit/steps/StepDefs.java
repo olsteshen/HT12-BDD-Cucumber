@@ -140,7 +140,7 @@ public class StepDefs {
     }
 
     @When("I fill delivery address information manually:")
-    public void fillDeliveryAddressFields(List<Address> deliveryAddress) {
+    public void fillDeliveryAddressFields(DataTable deliveryAddress) {
         checkoutPageObject.fillAddressFields(deliveryAddress);
     }
 
