@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-reports", "json:tager/cucumber-reports/CucumberTest.json"},
         monochrome = true,
-        tags= "@Regression",
         glue = "com.cucumber.junit",
         features = "classpath:com/cucumber.junit.features"
 )
