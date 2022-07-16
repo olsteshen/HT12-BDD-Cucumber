@@ -30,11 +30,6 @@ public class HomePage extends AbstractPage {
         return new SearchResultsPage(driver);
     }
 
-    public SearchResultsPage searchButtonClick() {
-        searchButton.click();
-        return new SearchResultsPage(driver);
-    }
-
     public AccountPage navBarClick() {
         navigationBar.signInLabelClick();
         return new AccountPage(driver);

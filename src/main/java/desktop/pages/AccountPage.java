@@ -20,15 +20,15 @@ public class AccountPage extends AbstractPage {
     public WebElement passwordField;
     @FindBy(xpath = "//input[@id='signInSubmit']")
     public WebElement submitButton;
-    NavigationBarFragment navigationBar = new NavigationBarFragment(driver);
+
 
     public AccountPage(WebDriver driver) {
         super(driver);
         SingletonDriver.getInstance();
     }
 
-    public void checkAccountPageURL() {
-        Assertions.assertEquals(SIGN_IN_PAGE_URL, SingletonDriver.getInstance().getCurrentUrl(), "Wrong page url" );
+    public String pageURL() {
+        return getPageUrl();
     }
 
     public void enterEmail(String email) {
